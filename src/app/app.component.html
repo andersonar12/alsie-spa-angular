@@ -1,0 +1,62 @@
+<nav class="navbar bg-green"></nav>
+
+<header class="bg-white">
+  <div class="container">
+    <div class="row d-flex justify-content-between">
+      <div class="col-10 col-sm-5 col-md-4">
+        <a routerLink="/"
+          ><img src="assets/logo.png" alt="" srcset="" class="img-fluid"
+        /></a>
+      </div>
+
+      <div class="col-12 col-sm-7 d-flex align-items-end">
+        <form class="w-100">
+          <div class="input-group w-100 input-search">
+            <label
+              class="col-12 col-sm-5 col-md-4 control-label text-left text-sm-right pt-2"
+              >Encuentra tu programa:</label
+            >
+            <input
+              type="search"
+              class="form-control border border-dark"
+              [(ngModel)]="dataSearch"
+              (keyup.enter)="programSearch(dataSearch)"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div class="input-group-btn">
+              <button
+                class="btn btn-default"
+                type="button"
+                (click)="programSearch(dataSearch)"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p class="error-message mb-0 mt-1 pl-3" style="display: none">
+                El programa no esta disponible
+                <a class="text-primary" routerLink="/programas/solicitar"
+                  >Solicita aqui un programa nuevo</a
+                >
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<router-outlet></router-outlet>
+
+<nav class="navbar bg-gray"></nav>
+
+<a class="top-link hide" href="" id="js-top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+    <path d="M12 6H0l6-6z" />
+  </svg>
+  <!-- <i class="fas fa-angle-up"></i> -->
+  <span class="screen-reader-text"></span>
+</a>

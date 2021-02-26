@@ -1,0 +1,59 @@
+.programs {
+  background-color: #ebebeb;
+}
+
+.media-group__img {
+  float: left;
+  margin-right: 12px;
+  position: relative;
+}
+
+.box-w-117 {
+  width: 117px;
+}
+
+.program {
+  font-size: 12px;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.media-group__view-program {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  background-color: #be0c1e;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.media-group__view-program:hover {
+  background-color: #6f6f6e;
+  color: #fff;
+}
+
+div.media-group__img.box-w-117 > a.media-group__view-program {
+  font-size: 13px;
+}
+
+.btn {
+  font-size: 11px !important;
+}
+
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu span {
+  display: inline-block;
+}

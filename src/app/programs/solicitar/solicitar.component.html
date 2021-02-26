@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-6 col-md-5">
+      <form [formGroup]="itemForm" (ngSubmit)="submit()">
+        <div>
+          <p>Llena el siguiente formulario para solicitar un nuevo programa</p>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12 col-sm-5" for="email">Linea</label>
+          <div class="col-12 col-sm-7">
+            <select
+              name="line"
+              formControlName="line"
+              class="custom-select form-control border border-dark"
+              aria-placeholder="Seleccion"
+            >
+              <!-- <option selected value="Educacion">Educacion</option> -->
+              <option
+                *ngFor="let line of lines; let i = index"
+                [value]="line.id"
+                [selected]="line.id == 1"
+              >
+                {{ line.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12 col-sm-5">Programa:</label>
+          <div class="col-12 col-sm-7">
+            <input
+              type="text"
+              class="form-control border border-dark"
+              name="program"
+              formControlName="program"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12" for=""
+            >Breve descripción del programa solicitado:</label
+          >
+          <div class="col-12">
+            <textarea
+              class="form-control border border-dark"
+              rows="5"
+              name="description"
+              formControlName="description"
+            ></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12 col-sm-5" for="">Nombres:</label>
+          <div class="col-12 col-sm-7">
+            <input
+              type="text"
+              class="form-control border border-dark"
+              name="name"
+              formControlName="name"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12 col-sm-5">Apellidos:</label>
+          <div class="col-12 col-sm-7">
+            <input
+              type="text"
+              class="form-control border border-dark"
+              name="lastname"
+              formControlName="lastname"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12 col-sm-5" for="pwd"
+            >Correo electronico:</label
+          >
+          <div class="col-12 col-sm-7">
+            <input
+              type="text"
+              class="form-control border border-dark"
+              placeholder=""
+              name="email"
+              formControlName="email"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-12 col-sm-5" for="pwd"
+            >Numero de contacto:</label
+          >
+          <div class="col-12 col-sm-7">
+            <input
+              type="number"
+              class="form-control border border-dark"
+              name="contact"
+              formControlName="contact"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col text-center">
+            <ngx-recaptcha2
+              #captchaElem
+              [siteKey]="siteKey"
+              formControlName="recaptcha"
+              (success)="successCaptcha($event)"
+              style="display: inline-block"
+              ><!-- -->
+            </ngx-recaptcha2>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col text-center">
+            <button [disabled]="itemForm.invalid" class="btn btn-danger">
+              Enviar Solicitud
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="text-center message-feedback mt-5" style="display: none">
+        <h6>Muchas Gracias por tu sugerencia</h6>
+        <p>Fecha de Registro: 19-02-2020</p>
+        <a
+          class="btn btn-success"
+          [href]="baseWhatsappInfoUrl + 'Mas%información'"
+          target="_blank"
+        >
+          <img
+            src="assets/icons/whatsapp-bordered.svg"
+            width="27px"
+            height="27px"
+            alt=""
+            srcset=""
+          /><span class="pl-1">Mas Información</span>
+        </a>
+        <br />
+
+        <a [routerLink]="['/programas/line', '']" class="text-primary"
+          >Revisa todos nuestros programas</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

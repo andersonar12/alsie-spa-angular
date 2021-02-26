@@ -1,0 +1,118 @@
+<section class="programs pt-4">
+  <div
+    class="text-center animate__animated animate__fadeIn pt-4"
+    *ngIf="spinner"
+  >
+    <div class="spinner-border" style="width: 7rem; height: 7rem" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="container" *ngIf="programItems.length > 0">
+    <div class="row">
+      <div
+        class="col-12 col-sm-12 col-md-4 pb-4 animate__animated animate__fadeIn"
+        *ngFor="let program of programItems"
+      >
+        <div class="media-group__img box-w-117">
+          <a href="#"
+            ><img
+              width="120"
+              height="120"
+              [src]="baseUrlImg + program.imageFilename"
+              onerror="this.src='assets/images/program-item-0.png'"
+              class="" /></a
+          ><a href="#" class="media-group__view-program">Ver Programa</a>
+        </div>
+        <div class="bg-white h-100 pt-2">
+          <div class="row">
+            <div class="col p-0">
+              <a href="#"
+                ><p class="program mb-1 pr-1">
+                  {{ program.name }}
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-small p-0">
+              <!-- -->
+              <a [routerLink]="['/programas', program.line]"
+                ><img
+                  [src]="baseUrlImg + 'line-icon-' + program.line + '.svg'"
+                  onerror="this.src='assets/images/line-icon-0.svg'"
+                  width="18px"
+                  height="18px"
+                  alt=""
+                  srcset=""
+                />
+                <p class="d-inline-block pl-1 mb-2">
+                  {{ getLineNameById(program.line) }}
+                </p></a
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col p-0 text-small d-flex align-items-center">
+              <div>
+                <img
+                  src="assets/icons/academy.svg"
+                  width="20px"
+                  height="20px"
+                  alt=""
+                  srcset=""
+                />
+                <p class="d-inline-block pl-1">{{ program.university }}</p>
+              </div>
+              <div class="ml-2">
+                <i
+                  class="d-inline-block icon fa fa-calendar media-group__icon"
+                ></i>
+                <p class="d-inline-block pl-1">
+                  {{ program.durationInMonths }} meses
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center pb-4" *ngIf="totalReg">
+      <div class="col-2 col-sm-1 text-right p-0">
+        <button
+          type="button"
+          class="btn btn-outline-primary ml-1 mr-1"
+          (click)="rewind()"
+        >
+          <p class="mb-0 font-medium"><strong><< </strong></p>
+        </button>
+      </div>
+      <div
+        class=" {{
+          totalReg >= 54 ? 'col-7 col-sm-6 col-md-4' : 'col-5 col-sm-5 col-md-3'
+        }}"
+      >
+        <div class="scrollmenu text-center">
+          <span *ngFor="let p of totalPages; let i = index">
+            <a
+              style="cursor: pointer"
+              (click)="setPage(i)"
+              class="btn {{
+                i === page ? 'btn-primary' : 'btn-outline-primary'
+              }} text-center ml-1 mr-1 font-medium"
+              >{{ i + 1 }}</a
+            >
+          </span>
+        </div>
+      </div>
+      <div class="col-2 col-sm-1 p-0 text-left">
+        <button
+          type="button"
+          class="btn btn-outline-primary ml-1 mr-1"
+          (click)="forward()"
+        >
+          <p class="mb-0 font-medium"><strong> >> </strong></p>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
